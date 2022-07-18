@@ -27,8 +27,7 @@ def delta_pnl_func(budget_dict, totMonths):
             delta = (x - y)
             delta_pnl[key] = delta
         y = x
-
-        
+       
     for key, value in delta_pnl.items():
         
         total = total + int(value)

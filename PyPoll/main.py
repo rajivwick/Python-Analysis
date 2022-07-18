@@ -3,7 +3,7 @@ import csv
 
 election_csv = os.path.join('Resources', 'election_data.csv')
 election_list = []
-output_list = []
+results = []
 data_dict = {}      
 output_results = {}
 
@@ -73,22 +73,19 @@ def winner_func(data_dict):
     win_candidate = max(data_dict, key=data_dict.get)
     return win_candidate
 
-def output_list_func(output_results, winner):
+def output_func(output_results, winner):
 
-    output_list.append("Election Results")
-    output_list.append("-------------------------")
-    output_list.append(f'Total Votes: {str(len(list(election_list)))}')
-    output_list.append("-------------------------")
+    results.append("Election Results")
+    results.append("-------------------------")
+    results.append(f'Total Votes: {str(len(list(election_list)))}')
+    results.append("-------------------------")
     for key, value  in output_results.items():
-       output_list.append(str('%s: %s' % (key ,value)))
-    output_list.append("-------------------------")
-    output_list.append(winner)
-    output_list.append("-------------------------")
+       results.append(str('%s: %s' % (key ,value)))
+    results.append("-------------------------")
+    results.append(winner)
+    results.append("-------------------------")
     
-    for line in output_list:
-        print(line)
-
-
+    
 with open(election_csv) as csvfile:
     election = csv.reader(csvfile, delimiter=',')
     
@@ -96,14 +93,16 @@ with open(election_csv) as csvfile:
     election_list = list(election)
     calc_percentage_func(election_list)
     winner = winner_func(data_dict)
-    output_list_func(output_results, winner)
+    output_func(output_results, winner)
     
+    for line in results:
+        print(line)
 
 output_path = os.path.join('Analysis', 'Results.txt')
 
 with open(output_path, "w") as datafile:
     
-    for line in output_list:
+    for line in results:
         datafile.write(line)
         datafile.write('\n')
     
