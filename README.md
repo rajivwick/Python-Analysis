@@ -1,8 +1,8 @@
 # Python-Analysis
 
 ### Dependencies
-<ul>
 Libaries:
+<ul>
 <li> os </li>
 <li> csv </li>
 </ul>
@@ -46,7 +46,7 @@ Using this data I have extracted the following details:
 <li>The percentage of votes each candidate won</li>
 <li>The total number of votes each candidate won</li>
 <li>The winner of the election based on popular vote</li>
-
+</ul>
 The output is displayed in the terminal as well as output via a text file.
 
 ### Output
